@@ -361,6 +361,9 @@ function PreviewViewModel(primaryGlobe) {
     };
   }
 
+// Create a globe
+let globe = new Globe("globe-canvas");
+
 // Web Map Service information from NASA's Near Earth Observations WMS
 var serviceAddress = "https://neo.sci.gsfc.nasa.gov/wms/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0";
 // Named layer displaying Average Temperature data
@@ -379,15 +382,21 @@ var createLayer = function (xmlDom) {
    // Create the WMS Layer from the configuration object
    var wmsLayer = new WorldWind.WmsLayer(wmsConfig);
 
-   // Add the layers to WorldWind and update the layer manager
-   globe.addLayer(wmsLayer);
+   globe.addLayer(wmsLayer, {
+     category: "overlay",
+     enabled: false,
+      });
 
-        };
+   get synchronizeLayerList();
+   //layerManager.synchronizeLayerList();
+   };
 
-$.get(serviceAddress).done(createLayer)
+$.get(serviceAddress).done(createLayer);
 
-// Create a globe
-let globe = new Globe("globe-canvas");
+// var layerManager = new LayerManager(globe.wwd);
+
+//console.log(LayerManager(globe.wwd));
+
 // Add layers to the globe 
 // Add layers ordered by drawing order: first to last
 globe.addLayer(new WorldWind.BMNGLayer(), {
@@ -398,6 +407,7 @@ globe.addLayer(new WorldWind.BMNGLandsatLayer(), {
     category: "base",
     enabled: false
 });
+
 globe.addLayer(new WorldWind.BingAerialLayer(), {
     category: "base",
     enabled: false
@@ -407,6 +417,7 @@ globe.addLayer(new WorldWind.BingAerialWithLabelsLayer(), {
     enabled: false,
     detailControl: 1.5
   });
+
 globe.addLayer(new WorldWind.BingRoadsLayer(), {
     category: "overlay",
     enabled: false,
@@ -439,7 +450,6 @@ globe.addLayer(new WorldWind.AtmosphereLayer(), {
   let settings = new SettingsViewModel(globe);
   let preview = new PreviewViewModel(globe);
   let search = new SearchViewModel(globe, preview.previewResults);
-
 
   // Bind the views to the view models
   ko.applyBindings(layers, document.getElementById('layers'));
