@@ -38,6 +38,7 @@ define([
     'model/globe/layers/UsgsImageryTopoBaseMapLayer',
     'model/globe/layers/UsgsNaipMapLayer',
     'model/globe/layers/UsgsTopoBaseMapLayer',
+    'model/globe/layers/AvSurfTempLayer',
     'url-search-params'],
         function (
                 ko,
@@ -60,6 +61,7 @@ define([
                 UsgsImageryTopoBaseMapLayer,
                 UsgsNaipMapLayer,
                 UsgsTopoBaseMapLayer,
+                AvSurfTempLayer,
                 URLSearchParams) {
             "use strict";
             /**
@@ -166,6 +168,10 @@ define([
                 this.addBaseLayer(new OpenTopoMapLayer(), {enabled: false});
 
                 this.addDataLayer(new WorldWind.RenderableLayer(constants.LAYER_NAME_WEATHER), {enabled: true, pickEnabled: true});
+
+                // add overlay layers
+                // temperature layer
+                this.addOverlayLayer(new AvSurfTempLayer(), {enabled: false});
 
 //            // Asynchronysly load the WMS layers found in the WWSK GeoServer WMS
 //            this.addAvailableWmsLayers();
