@@ -1,3 +1,4 @@
 cgis/__pycache__/
 globegis/__pycache__
 cgis/migrations
+cgis/static/data

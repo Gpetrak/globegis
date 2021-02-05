@@ -22,7 +22,7 @@ define([],
             /**
              * Base URL for WMT application images. (Do not use a relative path.)
              */
-            IMAGE_PATH: "js/model/images/",
+            IMAGE_PATH: "../../static/js/model/images/",
             //
             // Layer categories
             //
