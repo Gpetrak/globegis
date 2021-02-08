@@ -8,6 +8,63 @@
         </h4>
     </div>
     <div id="layers-body" class="section-body collapse in">
+        <div class="section-heading">
+        <h4 class="sub-header">
+            <span class="glyphicon glyphicon-cloud" aria-hidden="true" style="padding-right:5px;"></span>
+            Select or add a cloud service
+        </h4>
+    </div>
+    <!--Display the server address text box, dropdown popup, and the add server button-->
+    <div class="input-group" style="width:100%;">
+        <p>URL
+            <input id="add-server-text" type="text" style="width: calc(100% - 110px); min-width: 120px"
+                   data-bind="value: serverAddress"
+                   placeholder="Add new server URL"/>
+            <!-- servers dropdown button-->
+            <button type="button"
+                    class="btn btn-primary btn-sm dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true">
+                <span class="caret"></span>
+                <span class="sr-only">Server options</span>
+            </button>
+            <!--servers list-->
+            <select class="dropdown-menu" 
+                    size="4"
+                    data-bind="
+                    options: serverAddresses, 
+                    optionsText: 'name', 
+                    optionsValue: 'url',  
+                    value: serverAddressSelection">
+            </select>
+            <!--add server button-->
+            <button type="button" id="add-server-button"
+                    class="btn btn-primary btn-sm"
+                    data-bind="click: onAddServer">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+        </p>
+    </div>
+    <!--Display the servers and their capabilities-->
+    <div class="panel-group" role="tablist" aria-multiselectable="true" id="servers">
+        <!-- ko template: { name: 'server-template', foreach: servers } -->
+        <!-- /ko -->
+    </div>
+
+    <!--
+    Add Layer Dialog
+    -->
+    <div style="display: none">
+        <div id="add-layer-dialog">
+            Layer Type:
+            <select data-bind="options: optionValues, value: selectedOptionValue"></select>
+            <div>
+                Server Address:
+                <input style="display: block"/>
+            </div>
+        </div>
+    </div>
+        
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h5 class="panel-title">
@@ -58,62 +115,7 @@
         </button>
     </div>
     -->
-    <div class="section-heading">
-        <h4 class="sub-header">
-            <span class="glyphicon glyphicon-cloud" aria-hidden="true" style="padding-right:5px;"></span>
-            Cloud services
-        </h4>
-    </div>
-    <!--Display the server address text box, dropdown popup, and the add server button-->
-    <div class="input-group" style="width:100%;">
-        <p>URL
-            <input id="add-server-text" type="text" style="width: calc(100% - 110px); min-width: 120px"
-                   data-bind="value: serverAddress"
-                   placeholder="Add new server URL"/>
-            <!-- servers dropdown button-->
-            <button type="button"
-                    class="btn btn-primary btn-sm dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-haspopup="true">
-                <span class="caret"></span>
-                <span class="sr-only">Server options</span>
-            </button>
-            <!--servers list-->
-            <select class="dropdown-menu" 
-                    size="3"
-                    data-bind="
-                    options: serverAddresses, 
-                    optionsText: 'name', 
-                    optionsValue: 'url',  
-                    value: serverAddressSelection">
-            </select>
-            <!--add server button-->
-            <button type="button" id="add-server-button"
-                    class="btn btn-primary btn-sm"
-                    data-bind="click: onAddServer">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </button>
-        </p>
-    </div>
-    <!--Display the servers and their capabilities-->
-    <div class="panel-group" role="tablist" aria-multiselectable="true" id="servers">
-        <!-- ko template: { name: 'server-template', foreach: servers } -->
-        <!-- /ko -->
-    </div>
-
-    <!--
-    Add Layer Dialog
-    -->
-    <div style="display: none">
-        <div id="add-layer-dialog">
-            Layer Type:
-            <select data-bind="options: optionValues, value: selectedOptionValue"></select>
-            <div>
-                Server Address:
-                <input style="display: block"/>
-            </div>
-        </div>
-    </div>
+    
 </div>
 
 <!-- ================================================================ -->
