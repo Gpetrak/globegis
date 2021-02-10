@@ -69,7 +69,8 @@ define([
                 {name: "Crete-GIS database", url: "http://senselab.tucserv.tuc.gr/geoserver/wms"},
                 {name: "NASA Earth Observations", url: "https://neo.sci.gsfc.nasa.gov/wms/wms"},
                 {name: "European Centre for Medium-Range Weather Forecast", url: "https://apps.ecmwf.int/wms/?token=public"},
-                {name: "Sentinel-2 cloudless by EOX IT Services GmbH", url: "https://tiles.maps.eox.at/wms"}
+                {name: "Sentinel-2 cloudless by EOX IT Services GmbH", url: "https://tiles.maps.eox.at/wms"},
+                {name: "Copernicus Emergency Management Service", url: "https://www.efas.eu/api/wms/"}
 //                {name: "NOAA nowCOAST Observations", url: "https://nowcoast.noaa.gov/arcgis/services/nowcoast/obs_meteocean_insitu_sfc_time/MapServer/WMSServer"},
 //                {name: "NOAA nowCOAST Radar Imagery", url: "https://nowcoast.noaa.gov/arcgis/services/nowcoast/radar_meteo_imagery_nexrad_time/MapServer/WMSServer"},
 //                {name: "NOAA nowCOAST Surface Analysis", url: "https://nowcoast.noaa.gov/arcgis/services/nowcoast/analysis_meteohydro_sfc_rtma_time/MapServer/WMSServer"},
