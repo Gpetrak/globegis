@@ -40,6 +40,7 @@ define([
     'model/globe/layers/UsgsTopoBaseMapLayer',
     // overlay layer
     'model/globe/layers/AvSurfTempLayer',
+    'model/globe/layers/co',
     'url-search-params'],
         function (
                 ko,
@@ -64,6 +65,7 @@ define([
                 UsgsTopoBaseMapLayer,
                 // overlay layers
                 AvSurfTempLayer,
+                co,
                 URLSearchParams) {
             "use strict";
             /**
@@ -174,6 +176,8 @@ define([
                 // add overlay layers
                 // temperature layer
                 this.addOverlayLayer(new AvSurfTempLayer(), {enabled: false});
+                // Carbon monoxide
+                this.addOverlayLayer(new co(), {enabled: false});
 
 //            // Asynchronysly load the WMS layers found in the WWSK GeoServer WMS
 //            this.addAvailableWmsLayers();
