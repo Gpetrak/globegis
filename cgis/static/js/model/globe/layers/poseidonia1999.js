@@ -1,12 +1,5 @@
 /*global define, WorldWind, $ */
 
-/**
- * The USGS TNM Topo Base Map layer.
- * 
- * See: https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/WMTS/1.0.0/WMTSCapabilities.xml
- * 
- * @returns {Average Surface Temp}
- */
 define([
     'jquery',
     'worldwind'],
@@ -17,12 +10,12 @@ define([
      * @constructor
      * @augments Layer
      */
-    var AvSurfTempLayer = function () {
-        WorldWind.Layer.call(this, "Average Surface Temp");
+    var poseidonia1999 = function () {
+        WorldWind.Layer.call(this, "Ποσειδωνία 1999");
         
         // Web Map Tiling Service information from
-        var serviceAddress = "https://neo.sci.gsfc.nasa.gov/wms/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0";
-        var layerIdentifier = "MOD_LSTD_CLIM_M";
+        var serviceAddress = "http://senselab.tucserv.tuc.gr/geoserver/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0";
+        var layerIdentifier = "geonode:poseidonia1999";
         var self = this;
 
         // Called asynchronously to parse and create the WMTS layer
@@ -37,7 +30,6 @@ define([
             self.wmsLayer = new WorldWind.WmsLayer(wmsConfig);
             // add wms legend image in wmsConfig object
             self.wmsLayer.legendUrl = wmsLayerCapabilities.styles[0].legendUrls[0].url
-
         };
 
         // Called if an error occurs during WMS Capabilities document retrieval
@@ -47,13 +39,13 @@ define([
 
         $.get(serviceAddress).done(createLayer).fail(logError);
     };
-    AvSurfTempLayer.prototype = Object.create(WorldWind.Layer.prototype);
+    poseidonia1999.prototype = Object.create(WorldWind.Layer.prototype);
  
     /**
      * Refreshes the data associated with this layer. The behavior of this function varies with the layer
      * type. For image layers, it causes the images to be re-retrieved from their origin.
      */
-    AvSurfTempLayer.prototype.refresh = function () {
+    poseidonia1999.prototype.refresh = function () {
         if (this.wmsLayer) {
            return this.wmsLayer.refresh();
         }
@@ -66,7 +58,7 @@ define([
      * @param {DrawContext} dc The current draw context.
      * @protected
      */
-    AvSurfTempLayer.prototype.doRender = function (dc) {
+    poseidonia1999.prototype.doRender = function (dc) {
         if (this.wmsLayer) {
             return this.wmsLayer.doRender(dc);
         }
@@ -80,11 +72,11 @@ define([
      * @returns {boolean} true If this layer is within the current view, otherwise false.
      * @protected
      */
-    AvSurfTempLayer.prototype.isLayerInView = function (dc) {
+    poseidonia1999.prototype.isLayerInView = function (dc) {
         if (this.wmsLayer) {
             return this.wmsLayer.isLayerInView(dc);
         }
     };
 
-    return AvSurfTempLayer;
+    return poseidonia1999;
 });

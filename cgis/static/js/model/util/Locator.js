@@ -65,10 +65,8 @@ define(['jquery'],
                          * @param {GeoLocation.Position} position Coordinates and accuracy information.
                          */
                         explorer.lookAtLatLon(
-                            35,
-                            25
-                            // position.coords.latitude,
-                            // position.coords.longitude);
+                             position.coords.latitude,
+                             position.coords.longitude);
                     },
                     function (error) {
                         /**

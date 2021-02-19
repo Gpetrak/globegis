@@ -40,6 +40,11 @@ define([
     'model/globe/layers/UsgsTopoBaseMapLayer',
     // overlay layer
     'model/globe/layers/AvSurfTempLayer',
+    'model/globe/layers/rivers',
+    'model/globe/layers/surface_water',
+    'model/globe/layers/island_wetland_loc',
+    'model/globe/layers/habitats',
+    'model/globe/layers/poseidonia1999',
     'url-search-params'],
         function (
                 ko,
@@ -64,6 +69,11 @@ define([
                 UsgsTopoBaseMapLayer,
                 // overlay layers
                 AvSurfTempLayer,
+                rivers,
+                surface_water,
+                island_wetland_loc,
+                habitats,
+                poseidonia1999,
                 URLSearchParams) {
             "use strict";
             /**
@@ -174,6 +184,11 @@ define([
                 // add overlay layers
                 // temperature layer
                 this.addOverlayLayer(new AvSurfTempLayer(), {enabled: false});
+                this.addOverlayLayer(new rivers(), {enabled: true});
+                this.addOverlayLayer(new surface_water(), {enabled: true});
+                this.addOverlayLayer(new island_wetland_loc(), {enabled: true});
+                this.addOverlayLayer(new habitats(), {enabled: true}); 
+                this.addOverlayLayer(new poseidonia1999(), {enabled: true});
 
 //            // Asynchronysly load the WMS layers found in the WWSK GeoServer WMS
 //            this.addAvailableWmsLayers();
