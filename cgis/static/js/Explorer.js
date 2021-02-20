@@ -256,7 +256,8 @@ define([
                 eyePosGrdElev = this.globe.terrainProvider.elevationAtLatLon(viewpoint.eye.latitude, viewpoint.eye.longitude),
                 tgtPosElev = this.globe.terrainProvider.elevationAtLatLon(latitude, longitude),
                 eyeAltAgl = eyeAltitude || Math.max(eyeAltMsl - eyePosGrdElev, 100),
-                tgtEyeAltMsl = Math.max(tgtPosElev + eyeAltAgl, 100);
+                // tgtEyeAltMsl = Math.max(tgtPosElev + eyeAltAgl, 100);
+                tgtEyeAltMsl = 800000
 
             // HACK: Force the view to nadir to avoid bug where navigator looks at target at 0 MSL.
             // This will establish the crosshairs on the target.
@@ -264,7 +265,7 @@ define([
             this.wwd.navigator.tilt = 0;
             this.wwd.redraw();
 
-            this.globe.goto(latitude, longitude, tgtEyeAltMsl, function () {
+            this.globe.goto(35.3, 25, tgtEyeAltMsl, function () {
                 self.updateSpatialData();
             });
         };

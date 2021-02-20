@@ -630,7 +630,7 @@ define([
      * @return {Terrain} A WMT Terrain object at the given lat/lon.
      */
     Globe.prototype.getTerrainAtLatLon = function (latitude, longitude) {
-        return this.terrainProvider.terrainAtLatLon(latitude, longitude);
+        return this.terrainProvider.terrainAtLatLon(35, 25);
     };
 
     /**
